@@ -48,7 +48,7 @@ async def _callbacks(bot: Client, callback_query: CallbackQuery):
         await bot.edit_message_text(
             chat_id=chat_id,
             message_id=message_id,
-            text="**Here's How to use me**\n" + Data.HELP,
+            text="<b>Here's How to use me</b>\n" + Data.HELP,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(Data.home_buttons),
         )
@@ -61,7 +61,7 @@ async def _callbacks(bot: Client, callback_query: CallbackQuery):
         only_owner = await get_only_owner(chat_id)
         creator = True if (await bot.get_chat_member(chat_id, callback_query.from_user.id)).status == "creator" else False
         if only_owner and not creator:
-            await callback_query.answer("Only owner can change settings in this chat.", show_alert=True)
+            await callback_query.answer("<b>Only owner can Change Settings in this Group.</b>", show_alert=True)
             return
         if main in ["on", "off"]:
             current_bool = await get_ignore_service(chat_id)
@@ -72,10 +72,10 @@ async def _callbacks(bot: Client, callback_query: CallbackQuery):
             if current_bool == damn:
                 if current_bool:
                     await toggle_ignore_service(chat_id, False)
-                    await callback_query.answer("Now the service messages will be checked too!", show_alert=True)
+                    await callback_query.answer("<b>Now the service messages will be checked too!</b>", show_alert=True)
                 else:
                     await toggle_ignore_service(chat_id, True)
-                    await callback_query.answer("Now the service messages will not be checked!", show_alert=True)
+                    await callback_query.answer("<b>Now the service messages will not be checked!</b>", show_alert=True)
             # else:
             #     pass
         elif main in ["true", "false"]:
