@@ -11,19 +11,19 @@ async def settings(bot: Client, msg):
         return
     chat_id = msg.chat.id
     if not await chat_exists(msg.chat.id):
-        await msg.reply("Please add a force subscribe chat using /fsub to use me.")
+        await msg.reply("<b>Please add a Force Subscribers chat using /fsub to Use Me.</b>")
         return
     only_owner = await get_only_owner(chat_id)
     creator = True if (await bot.get_chat_member(chat_id, msg.from_user.id)).status == "creator" else False
     if only_owner and not creator:
-        await msg.reply("Only owner can change settings in this chat.")
+        await msg.reply("<b>Only Owner can Change Settings in this chat.</b>")
         return
     buttons = await action_markup(chat_id)
     await msg.reply(
         "**Settings** \n\n"
-        "1) Choose action type for those who haven't joined the force subscribe chat. Defaults to Mute.\n"
-        "2) Choose to ignore welcome messages or not. If you don't want the bot to take action on users just when they join (didn't chat), choose On else Off. Defaults to On.\n"
-        "3) Choose to allow admins to change fsub chat and settings or not. Defaults to 'Allow Only Owner'.",
+        "<b>1) Choose action type for those who haven't joined the force subscribe chat. Defaults to Mute.\n"
+        "2) Choose to ignore welcome messages or not. If you don't want the bot to take Action on users just when they Join (didn't chat), choose on else Off. Defaults to On.\n"
+        "3) Choose to Allow Admins to change fsub chat and settings or not. Defaults to 'Allow Only Owner</b>'.",
         reply_markup=InlineKeyboardMarkup(buttons)
     )
 
@@ -52,10 +52,10 @@ async def action_markup(chat_id):
         data = "off"
     only_owner = await get_only_owner(chat_id)
     if only_owner:
-        only_owner = "Allow Only Owner"
+        only_owner = "<b>Allow Only Owner</b>"
         data2 = "True"
     else:
-        only_owner = "Allow Admins Too"
+        only_owner = "<b>Allow Admins Too</b>"
         data2 = "False"
     buttons = [
         [
