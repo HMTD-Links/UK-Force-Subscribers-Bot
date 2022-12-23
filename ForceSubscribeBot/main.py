@@ -34,11 +34,11 @@ async def main(bot: Client, msg: Message):
                 if action == 'kick':
                     await msg.chat.kick_member(user_id)
                     await msg.chat.unban_member(user_id)
-                    await msg.reply("<b>Kicked Member Because not Joined Force Subscribe Chat</b>")
+                    await msg.reply("<b>Hello 👋🏻 {mention},\nI'm UK Movies Zone's Official Force Subscribers Bot.</b>")
                     return
                 elif action == 'ban':
                     await msg.chat.kick_member(user_id)
-                    await msg.reply("<b>Banned Member Because not Joined Force Subscribe Chat</b>")
+                    await msg.reply("<b>Hello 👋🏻 {mention},\nI'm UK Movies Zone's Official Force Subscribers Bot.</b>")
                     return
                 buttons = [[InlineKeyboardButton("✨ Join Our Channel ✨", url=link)]]
                 if action == 'mute':
@@ -53,4 +53,4 @@ async def main(bot: Client, msg: Message):
             except ChatWriteForbidden:
                 pass
     except ChatAdminRequired:
-        await msg.reply(f"<b>I have been demoted in `{force_chat}` (force subscribe chat)!</b>")
+        await msg.reply(f"<b>I have been Demoted in `{force_chat}` (force subscribe chat)!</b>")
