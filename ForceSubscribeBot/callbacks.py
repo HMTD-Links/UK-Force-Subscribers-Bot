@@ -81,7 +81,7 @@ async def _callbacks(bot: Client, callback_query: CallbackQuery):
         elif main in ["true", "false"]:
             creator = True if (await bot.get_chat_member(chat_id, callback_query.from_user.id)).status == "creator" else False
             if not creator:
-                await callback_query.answer("This is a special setting and can only be changed by owner.", show_alert=True)
+                await callback_query.answer("<b>This is a Special Setting and can Only be Changed by Owner.</b>", show_alert=True)
                 return
             current_bool = await get_only_owner(chat_id)
             if main == "true":
@@ -91,20 +91,20 @@ async def _callbacks(bot: Client, callback_query: CallbackQuery):
             if current_bool == damn:
                 if current_bool:
                     await toggle_only_owner(chat_id, False)
-                    await callback_query.answer("Now admins can change fsub chat and settings!", show_alert=True)
+                    await callback_query.answer("<b>Now Admins can Change fsub chat and Settings!</b>", show_alert=True)
                 else:
                     await toggle_only_owner(chat_id, True)
-                    await callback_query.answer("Now only owner can change fsub chat and settings!", show_alert=True)
+                    await callback_query.answer("<b>Now only Owner can Change fsub chat and Settings!</b>", show_alert=True)
         else:
             current_action = await get_action(chat_id)
             if main == current_action:
-                await callback_query.answer(f"{main.capitalize()} is already the action type.", show_alert=True)
+                await callback_query.answer(f"<b>{main.capitalize()} is Already the Action Type.</b>", show_alert=True)
                 return
             else:
                 await change_action(chat_id, main)
         buttons = await action_markup(chat_id)
         await callback_query.message.edit_reply_markup(reply_markup=InlineKeyboardMarkup(buttons))
-    elif query.startswith("joined"):
+    elif query.startswith("<b>✅ Joined</b>"):
         try:
             muted_user_id = int(query.split('+')[1])
         except IndexError:
@@ -118,21 +118,21 @@ async def _callbacks(bot: Client, callback_query: CallbackQuery):
         chat = await bot.get_chat(force_chat)
         mention = '@'+chat.username if chat.username else 'the chat'
         if bot_chat_member.status != "administrator":
-            await callback_query.answer("I've been demoted from this chat. I can't unmute you now. Sorry!", show_alert=True)
-            await bot.send_message(chat_id, "I've been demoted here. Of no use then!")
+            await callback_query.answer("<b>I've been Demoted from this Chat. I can't Unmute you Now. Sorry!</b>", show_alert=True)
+            await bot.send_message(chat_id, "<b>I've been Demoted here. Of no use then!</b>")
             return
         if bot_chat_member2.status != "administrator":
-            await callback_query.answer("I've been demoted from the force subscribe chat.", show_alert=True)
-            await bot.send_message(chat_id, "I've been demoted from the force subscribe chat. Of no use then!")
+            await callback_query.answer("<b>I've been Demoted from the Force Subscribers Chat.</b>", show_alert=True)
+            await bot.send_message(chat_id, "<b>I've been Demoted from the Force Subscribers Chat Of no use Then!</b>")
             return
-        not_joined = f"Join {mention} first then try!"
+        not_joined = f"<b>Join {mention}, First Then Try!</b>"
         try:
             if user_id == muted_user_id:
                 await bot.get_chat_member(force_chat, user_id)
                 await bot.unban_chat_member(chat_id, user_id)
-                await callback_query.answer("Good Kid. You can start chatting properly in group now.", show_alert=True)
+                await callback_query.answer("<b>Good Kid. You can Start Chatting Properly in Group Now.</b>", show_alert=True)
                 await callback_query.message.delete()
             else:
-                await callback_query.answer('This message is not for you!', show_alert=True)
+                await callback_query.answer('<b>This Message is not for You!</b>', show_alert=True)
         except UserNotParticipant:
             await callback_query.answer(not_joined, show_alert=True)
