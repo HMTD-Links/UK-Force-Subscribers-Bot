@@ -34,18 +34,18 @@ async def main(bot: Client, msg: Message):
                 if action == 'kick':
                     await msg.chat.kick_member(user_id)
                     await msg.chat.unban_member(user_id)
-                    await msg.reply("Kicked member because not joined Force Subscribe Chat")
+                    await msg.reply("<b>Kicked Member Because not Joined Force Subscribe Chat</b>")
                     return
                 elif action == 'ban':
                     await msg.chat.kick_member(user_id)
-                    await msg.reply("Banned member because not joined Force Subscribe Chat")
+                    await msg.reply("<b>Banned Member Because not Joined Force Subscribe Chat</b>")
                     return
-                buttons = [[InlineKeyboardButton("✨ Join This Chat ✨", url=link)]]
+                buttons = [[InlineKeyboardButton("✨ Join Our Channel ✨", url=link)]]
                 if action == 'mute':
                     await msg.chat.restrict_member(user_id, ChatPermissions(can_send_messages=False))
                     buttons.append([InlineKeyboardButton("Unmute Me", callback_data=f"joined+{msg.from_user.id}")])
                 await msg.reply(
-                    f"You must join {mention} to chat here.",
+                    f"<b>You Must Join {mention} to Chat here.</b>",
                     disable_web_page_preview=True,
                     reply_markup=InlineKeyboardMarkup(buttons),
                 )
@@ -53,4 +53,4 @@ async def main(bot: Client, msg: Message):
             except ChatWriteForbidden:
                 pass
     except ChatAdminRequired:
-        await msg.reply(f"I have been demoted in `{force_chat}` (force subscribe chat)!")
+        await msg.reply(f"<b>I have been demoted in `{force_chat}` (force subscribe chat)!</b>")
