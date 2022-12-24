@@ -74,7 +74,7 @@ Example : `/fsub -1001811940117` or `/forcesubscribe -1001811940117`
 
 📡 Hosted on :- VPS
 
-ℹ️ Source Code :- [Click Here](https://bit.ly/3MyHHyQ)
+ℹ️ Source Code :- [Click Here](https://droplink.co/UK_Force_Subscribers_Bot)
 
 📢 Updates Channel : [HMTD Links](https://t.me/HMTD_Links)
 
