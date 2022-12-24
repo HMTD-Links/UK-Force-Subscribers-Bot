@@ -62,13 +62,23 @@ Example : `/fsub -1001811940117` or `/forcesubscribe -1001811940117`
     ABOUT = """
 **About This Bot** 
 
-**A Telegram Force Subscribing Bot by @UK_Studios_Official
+**A Telegram Force Subscribing Bot by [UK Studios Official](https://t.me/UK_Studios_Official)
 
-Source Code : [Click Here](https://bit.ly/3MyHHyQ)
+🤖 My Name :- [UK Force Subscribers Bot](https://t.me/UK_Force_Subscribers_Bot)
 
-Framework : [Pyrogram](docs.pyrogram.org)
+🧑🏻‍💻 Developer :- [Karthik](http://t.me/HMTD_Karthik)
 
-Language : [Python](www.python.org)
+📚 Framework :- [Pyrogram](docs.pyrogram.org)
 
-Developer : @GreyMatter_Owner**
+📝 Language :- [Python](www.python.org)
+
+📡 Hosted on :- VPS
+
+ℹ️ Source Code :- [Click Here](https://bit.ly/3MyHHyQ)
+
+📢 Updates Channel : [HMTD Links](https://t.me/HMTD_Links)
+
+🔥 Powered By :- [UK Movies Zone (Updates)](https://t.me/UK_Movies_Zone_Updates)
+
+🌐 Website : [www.HMTDMovies.tk](https://www.HMTDMovies.tk/)**
     """
